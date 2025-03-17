@@ -1863,13 +1863,15 @@ var mangaId = () => {
 
       const link = data.link.split("/").pop();
 
+      $elements["popover-manga-see"].style.display = "";
+      $elements["manga-images"].innerHTML =
+        '<div class="loader-i" style="--color:var(--app-color-letter); padding: 20px"></div>';
+
       fetch(
         `https://manhwawebbackend-production.up.railway.app/chapters/see/${link}`
       )
         .then((res) => res.json())
         .then((data) => {
-          $elements["popover-manga-see"].style.display = "";
-
           $elements[
             "chapter-num"
           ].innerText = `Capitulo ${data.chapter.chapter}`;
