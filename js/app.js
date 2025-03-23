@@ -1488,7 +1488,7 @@ var mangaId = () => {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-svg-name="fi fi-rr-zoom-out"><path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"></path><path d="M13,9H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Z"></path></svg>
               </button>
               <h3 id="chapter-num"></h3>
-              <button  id="button-zoom-in">
+              <button id="button-zoom-in">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-svg-name="fi fi-rr-zoom-in"><path d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z"></path><path d="M13,9H11V7A1,1,0,0,0,9,7V9H7a1,1,0,0,0,0,2H9v2a1,1,0,0,0,2,0V11h2a1,1,0,0,0,0-2Z"></path></svg>
               </button>
               <button id="button-fullscreen">
@@ -1654,7 +1654,7 @@ var mangaId = () => {
 
   useThis.functions.renderSeason = (index = 0) => {
     const array = useThis.values.data.chapters;
-
+    console.log(array);
     $elements.episodes.innerHTML = array
       .map((episode) => {
         if (!episode.link) {
@@ -1872,13 +1872,16 @@ var mangaId = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+
+          console.log(data);
+
           $elements[
             "chapter-num"
           ].innerText = `Capitulo ${data.chapter.chapter}`;
 
           $elements["manga-images"].innerHTML = data.chapter.img
             .map((src) => {
-              return `<div style="aspect-ratio:9/16"><img data-src="${src}" style="display:none"></div>`;
+              return `<div style="aspect-ratio:1/1"><img data-src="${src}" style="display:none"></div>`;
             })
             .join("");
 
@@ -1900,7 +1903,6 @@ var mangaId = () => {
 
             return child;
           });
-          console.log(data.chapter.img);
         });
 
       // $elements.itemTrueOption.showPopover();
