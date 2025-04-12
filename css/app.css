@@ -2,14 +2,14 @@
 /* ----- APP -- APP.CSS ----- */
 
 :root {
-  --app-color-background: #f7f7f7;
+  --app-color-background: #ffffff;
   --app-color-background-second: #ffffff;
   --app-color-background-ii: #ffffff;
   --app-color-background-transparent: rgb(0 0 0 / 0.1);
   --app-color-letter: #000000;
   --app-color-letter-second: #ffffff;
   --app-color-letter-ii: #ffffff;
-  --app-color-item: #ffffff;
+  --app-color-item: #f7f7f7;
   --app-color-item-second: #000000;
   --app-color-item-ii: #000000;
   --app-color-item-third: #f7f7f7;
@@ -89,6 +89,38 @@ input {
 }
 
 .app-form-label-checkbox {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+
+  & label {
+    all: unset;
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 20px;
+
+    cursor: pointer;
+    pointer-events: initial;
+
+    color: var(--app-color-letter);
+
+    &:has(input:checked) {
+      background: var(--app-color-letter);
+      color: var(--app-color-item);
+    }
+  }
+
+  & input {
+    display: none;
+  }
+
+  & span {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
+.app-form-label-radio {
   display: flex;
   align-items: center;
   pointer-events: none;
@@ -684,6 +716,29 @@ input {
   }
 }
 
+.div_uzuovb5 {
+  position: fixed;
+  inset: 0;
+
+  z-index: 999;
+  display: flex;
+
+  /* background: rgb(0 0 0 / 0.5); */
+  backdrop-filter: blur(15px);
+}
+
+.div_x8birmo {
+  margin: auto;
+
+  display: grid;
+  justify-items: center;
+  text-align: center;
+
+  width: 100%;
+  padding: 15px;
+  gap: 15px;
+}
+
 /* div_guZ6yID */
 
 /* ----- APP -- POPOVER.CSS ----- */
@@ -702,6 +757,18 @@ input {
 
   display: flex;
   pointer-events: none;
+}
+
+/* ----- APP -- TRANSITION.CSS ----- */
+
+.transition-rotate {
+  --rotate: 180deg;
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+
+  &.active {
+    transform: rotate(var(--rotate));
+  }
 }
 
 /* ----- ASSETS -- FOOTERVIDEOPLAYER.CSS ----- */
@@ -1825,6 +1892,7 @@ input {
 
 .div_uq3o6g9 {
   margin: auto;
+  position: relative;
   background: #000;
 
   width: min(100%, 750px);
@@ -1833,17 +1901,43 @@ input {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  &.immersive {
+    .header_bz3l5r1.top {
+      transform: translateY(-100%);
+    }
+
+    .header_bz3l5r1.bottom {
+      transform: translateY(100%);
+    }
+  }
 }
 
 .header_bz3l5r1 {
+  position: absolute;
+  background: rgb(0 0 0 / 0.3);
+
   width: 100%;
   height: 60px;
 
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   padding: 10px;
   gap: 10px;
+
+  transition: transform 0.3s ease;
+
+  &.top {
+    top: 0;
+    left: 0;
+  }
+
+  &.bottom {
+    bottom: 0;
+    left: 0;
+  }
 
   & button {
     width: 40px;
@@ -1886,6 +1980,19 @@ input {
     pointer-events: none;
   }
 }
+
+/* .div_heRQWyj {
+  display: flex;
+  align-items: center;
+
+  background: green;
+  flex: 1;
+
+  & button {
+    width: 40px;
+    height: 40px;
+  }
+} */
 
 /* ----- PAGE -- PELICULA.CSS ----- */
 
