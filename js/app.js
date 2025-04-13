@@ -2707,7 +2707,7 @@ var mangaId = () => {
                           <input type="radio" name="key" value="chapter">
                           <span>Capitulos</span>
                         </label>
-                        <label>
+                        <label style="display:none">
                           <input type="radio" name="key" value="similar">
                           <span>Otros</span>
                         </label>
@@ -3355,7 +3355,6 @@ var mangaId = () => {
 
     $elements["manga-images"].style.gap = "10px";
     $elements["manga-images"].innerHTML = data.chapter.img
-      .slice(0, 3)
       .map((src) => {
         return `<div style="aspect-ratio:1/1;"><img data-src="${src}" style="display:none"></div>`;
       })
